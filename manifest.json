@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "DonTranslateGoogle",
+  "version": "1.0.0",
+  "description": "Nunca mais abra a versão traduzida do Google. Redireciona automaticamente translate.goog para o site original.",
+  "author": "dontranslategoogle",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.translate.goog/*"],
+      "js": ["content.js"],
+      "run_at": "document_start",
+      "all_frames": true
+    },
+    {
+      "matches": [
+        "*://www.google.com/search*",
+        "*://www.google.com.br/search*",
+        "*://google.com/search*",
+        "*://google.com.br/search*",
+        "*://*.google.com/search*",
+        "*://*.google.com.br/search*"
+      ],
+      "js": ["search-fix.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "permissions": ["storage"],
+  "host_permissions": ["*://*.translate.goog/*", "*://*.google.com/*", "*://*.google.com.br/*"],
+  "action": {
+    "default_title": "DonTranslateGoogle",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}

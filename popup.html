@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DonTranslateGoogle</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; width: 300px; padding: 16px; background: #f8f9fa; color: #202124; }
+  h1 { font-size: 16px; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+  h1 span { font-size: 20px; }
+  p.desc { font-size: 12px; color: #5f6368; margin-bottom: 14px; line-height: 1.4; }
+  .card { background: white; border-radius: 12px; padding: 14px; box-shadow: 0 1px 3px rgba(0,0,0,0.12); }
+  .toggle-row { display: flex; align-items: center; justify-content: space-between; }
+  .toggle-label { font-size: 14px; font-weight: 600; }
+  .toggle-sub { font-size: 11px; color: #5f6368; }
+  .switch { position: relative; width: 44px; height: 26px; }
+  .switch input { opacity: 0; width: 0; height: 0; }
+  .slider { position: absolute; inset: 0; background: #dadce0; border-radius: 26px; cursor: pointer; transition: .2s; }
+  .slider:before { content: ""; position: absolute; width: 20px; height: 20px; left: 3px; bottom: 3px; background: white; border-radius: 50%; transition: .2s; box-shadow: 0 1px 2px rgba(0,0,0,0.2); }
+  input:checked + .slider { background: #1a73e8; }
+  input:checked + .slider:before { transform: translateX(18px); }
+  .status { margin-top: 10px; font-size: 12px; padding: 8px 10px; border-radius: 8px; text-align: center; }
+  .status.on { background: #e6f4ea; color: #137333; border: 1px solid #a8dab5; }
+  .status.off { background: #fce8e6; color: #a50e0e; border: 1px solid #f5b9b5; }
+  .footer { margin-top: 12px; font-size: 11px; color: #80868b; text-align: center; line-height: 1.4; }
+  .footer a { color: #1a73e8; text-decoration: none; }
+  .test { margin-top: 10px; font-size: 11px; background: #f1f3f4; padding: 8px; border-radius: 8px; word-break: break-all; }
+  .test b { display: block; margin-bottom: 4px; color: #202124; }
+</style>
+</head>
+<body>
+  <h1><span>🚫</span> DonTranslateGoogle</h1>
+  <p class="desc">Bloqueia a tradução automática forçada do Google e te leva direto ao site original.</p>
+
+  <div class="card">
+    <div class="toggle-row">
+      <div>
+        <div class="toggle-label">Proteção ativa</div>
+        <div class="toggle-sub">Redirecionar translate.goog</div>
+      </div>
+      <label class="switch">
+        <input type="checkbox" id="toggle">
+        <span class="slider"></span>
+      </label>
+    </div>
+    <div id="status" class="status on">✅ Ativado — você verá o site original</div>
+  </div>
+
+  <div class="test">
+    <b>Teste rápido:</b>
+    <a href="https://example-com.translate.goog" target="_blank">example-com.translate.goog</a> → deve virar <code>example.com</code>
+  </div>
+
+  <div class="footer">
+    Funciona em Chrome, Edge, Brave, Opera e Firefox.<br>
+    Código aberto • Baseado na doc oficial do Google Search Central
+  </div>
+
+<script src="popup.js"></script>
+</body>
+</html>
